@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul.nav {
+            width: 500px;
+            height: 60px;
+            margin: 0 auto;
+        }
+
+        ul.nav>li {
+            float: left;
+            width: 20%;
+            position: relative
+        }
+
+        ul.nav>li a {
+            width: 100%;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            line-height: 60px;
+            display: block;
+            font-weight: 400;
+            background: #ccc;
+        }
+
+        ul.nav>li>a:hover {
+            background: #ff0
+        }
+
+        ul.nav>li>ul {
+            width: 100%;
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 60px;
+        }
+        /* + 选择兄弟元素*/
+
+        ul.nav>li:hover ul {
+            display: block;
+        }
+
+        ul.nav>li>ul>li>a {
+            background: #cfc;
+            color: #fff;
+        }
+
+        ul.nav>li>ul>li>a:hover {
+            background: #cc0;
+            color: #eee;
+        }
+
+        img {
+            width: 500px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        ul.nav>li>ul.subnav>li {
+            position: relative;
+        }
+
+        ul.nav>li>ul.subnav>li>ul.thirdnav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            left: 100px;
+            display: none;
+        }
+
+        ul.nav>li>ul.subnav>li:hover>ul.thirdnav {
+            display: block;
+            background-color: greenyellow;
+            color: #fff;
+        }
+
+        ul.nav>li>ul.subnav>li:hover>ul.thirdnav>a>li {
+            text-align: center;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        ul.nav>li>ul.subnav>li>ul.thirdnav>a:hover {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>
+            <a href="index.html">首页</a>
+            <ul class="subnav">
+                <li>
+                    <a href="">子菜单一</a>
+                    <ul class="thirdnav">
+                        <a href="">
+                            <li>三级菜单三级菜单三级菜单</li>
+                        </a>
+                        <a href="">
+                            <li>三级菜单三级菜单三级菜单</li>
+                        </a>
+                        <a href="">
+                            <li>三级菜单三级菜单三级菜单</li>
+                        </a>
+                        <a href="">
+                            <li>三级菜单三级菜单三级菜单</li>
+                        </a>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="">子菜单二</a>
+                    <ul class="thirdnav">
+                        <a href="">
+                            <li>三级菜单三级菜单三级菜单</li>
+                        </a>
+                        <a href="">
+                            <li>三级菜单三级菜单三级菜单</li>
+                        </a>
+                        <a href="">
+                            <li>三级菜单三级菜单三级菜单</li>
+                        </a>
+                        <a href="">
+                            <li>三级菜单三级菜单三级菜单</li>
+                        </a>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="">子菜单三</a>
+                </li>
+                <li>
+                    <a href="">子菜单四</a>
+                </li>
+                <li>
+                    <a href="">子菜单五</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="about.html">关于我们</a>
+        </li>
+        <li>
+            <a href="news.html">新闻中心</a>
+        </li>
+        <li>
+            <a href="product.html">产品中心</a>
+        </li>
+        <li>
+            <a href="contact.html">联系我们</a>
+        </li>
+    </ul>
+</body>
+
+</html>
