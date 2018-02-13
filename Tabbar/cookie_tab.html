@@ -1,0 +1,199 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>自适应标签</title>
+    <style>
+        ul.TabBarLevel {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: 29px;
+        }
+
+        ul.TabBarLevel li {
+            float: left;
+            padding: 0;
+            height: 29px;
+            margin-right: 1px;
+            font-size: 9pt;
+        }
+
+        .TabBarLevel li a {
+            display: block;
+            line-height: 29px;
+            padding: 0 20px;
+            color: #333;
+            white-space: nowrap;
+            font-size: 9pt;
+
+        }
+
+        ul.TabBarLevel li.Selected {
+            font-size: 9pt;
+        }
+
+        ul.TabBarLevel li.Selected a {}
+
+        ul.TabBarLevel li a:link,
+        ul.TabBarLevel li a:visited {
+            color: #000;
+            text-decoration: none;
+        }
+
+        ul.TabBarLevel li a:hover,
+        ul.TabBarLevel li a:active {
+            color: #F30;
+            text-decoration: none;
+        }
+
+        ul.TabBarLevel li.Selected a:link,
+        ul.TabBarLevel li.Selected a:visited {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 9pt;
+        }
+
+        ul.TabBarLevel li.Selected a:hover,
+        ul.TabBarLevel li.Selected a:active {
+            color: #000;
+            text-decoration: none;
+            font-size: 9pt;
+        }
+
+        div.HackBox {
+            padding: 0px 0px;
+            border-left: 1px solid #b1b1b1;
+            border-right: 1px solid #b1b1b1;
+            border-bottom: 1px solid #b1b1b1;
+            margin: 0;
+            width: 100%;
+            font-size: 12px;
+        }
+
+
+        ul.TabBarLevel li a.active {
+            color: red!important;
+        }
+    </style>
+    <SCRIPT LANGUAGE="JavaScript">
+
+        function getTab(flag) {
+            var elList, i;
+            elList = document.getElementsByTagName_r("li");
+            for (i = 0; i < elList.length; i++) {
+                elList[i].className = "";
+            }
+            elList[flag].className = "Selected";
+            elList[flag].blur();
+        }
+        function goto(flag) {
+            if ("0" == flag) {
+                document.all.tabIframe.src = "http://www.baidu.com";
+            }
+            else if ("1" == flag) {
+                document.all.tabIframe.src = "http://www.sogou.com";
+            }
+            else if ("2" == flag) {
+                document.all.tabIframe.src = "http://www.google.com";
+            }
+            getTab(parseInt(flag));
+        }
+
+    </SCRIPT>
+</head>
+
+<body leftmargin="0" topmargin="0" scroll=no style="border:0">
+    <div id="Whatever" style="padding:10px;" align="center">
+        <ul class="TabBarLevel" id="TabPage">
+            <li class="TabBarLevel_li">
+                <a href="javascript:void(0)" onfocus="this.blur();" onclick="goto('0');" class="active">百度</a>
+            </li>
+            <li class="TabBarLevel_li">
+                <a href="javascript:void(0)" onfocus="this.blur();" onclick="goto('1');">搜狗</a>
+            </li>
+            <li class="TabBarLevel_li">
+                <a href="javascript:void(0)" onfocus="this.blur();" onclick="goto('2');">谷歌</a>
+            </li>
+        </ul>
+        <div class="HackBox">
+            <iframe name="tabIframe" src="http://www.baidu.com" marginheight="8" marginwidth="8" frameborder="0" width="100%" height="100%"></iframe>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<script LANGUAGE="JavaScript">
+    function getTab(flag) {
+        var elList, i;
+        elList = document.getElementsByTagName_r("li");
+        for (i = 0; i < elList.length; i++) {
+            elList[i].className = "";
+        }
+        elList[flag].className = "Selected";
+        elList[flag].blur();
+    }
+    function goto(flag) {
+        if (flag == "") {
+            flag = GetCookie("tab");
+            if (flag == "") flag = "0";
+        }
+        SetCookie("tab", flag);
+        if ("0" == flag) {
+            document.all.tabIframe.src = "http://www.baidu.com";
+        }
+        else if ("1" == flag) {
+            document.all.tabIframe.src = "http://www.sogou.com";
+        }
+        else if ("2" == flag) {
+            document.all.tabIframe.src = "http://www.taobao.com";
+        }
+        getTab(parseInt(flag));
+    }
+    function SetCookie(name, value) {
+        var argv = SetCookie.arguments;
+        var argc = SetCookie.arguments.length;
+        var expires = (2 < argc) ? argv[2] : null;
+        var path = (3 < argc) ? argv[3] : null;
+        var domain = (4 < argc) ? argv[4] : null;
+        var secure = (5 < argc) ? argv[5] : false;
+        document.cookie = name + "=" + escape(value) + ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) + ((path == null) ? "" : ("; path=" + path)) + ((domain == null) ? "" : ("; domain=" + domain)) + ((secure == true) ? "; secure" : "");
+    }
+    function GetCookie(Name) {
+        var search = Name + "=";
+        var returnvalue = "";
+        if (document.cookie.length > 0) {
+            offset = document.cookie.indexOf(search);
+            if (offset != -1) {
+                offset += search.length;
+                end = document.cookie.indexOf(";", offset);
+                if (end == -1)
+                    end = document.cookie.length;
+                returnvalue = unescape(document.cookie.substring(offset, end));
+            }
+        }
+        return returnvalue;
+    }
+        //-->
+</script>
+
+<script type="text/javascript">
+    goto("");
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
+
+<script>
+    $(function () {
+        $('.TabBarLevel_li a').click(function () {
+            $('.TabBarLevel_li a').each(function () {
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active')
+                }
+            })
+            $(this).addClass('active')
+        })
+    })
+</script>
